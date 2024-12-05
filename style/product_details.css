@@ -1,0 +1,157 @@
+/* .baloo-2-<uniquifier> {
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 90%;
+
+}
+
+.header h2 {
+
+    font-family: "Baloo 2", sans-serif;
+    color: #92C9B1;
+    border: 3px solid #92C9B1;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.links a {
+    text-decoration: none;
+    color: #7A7D7C;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 18px;
+}
+
+
+.search{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.inputs{
+    display: flex;
+
+}
+
+.name_input{
+    margin-right: 15px;
+}
+
+.inputs h3 {
+    font-size: 24px;
+    color: #4F759B;
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+.inputs input {
+    border: none;
+    font-size: 14px;
+    border-bottom: solid 1px #4f759b;
+    color: #4F759B;
+    height: 40px;
+    width: 250px;
+}
+
+.inputs input:focus{
+    box-shadow: none;
+    border: none;
+    border-bottom: solid 1px #4f759b;
+    outline: none;
+}
+
+.inputs input::placeholder{
+    color: #4F759B;
+    font-size: 14px;
+}
+
+.buttons-searcher button{
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+#search {
+    background-color: #4F759B;
+    border: #4F759B solid 1px;
+    color: #fff;
+    font-size: 14px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: bold;
+}
+
+#search:hover {
+    background-color: #fff;
+    color: #4F759B;
+}
+
+#clear {
+    font-size: 14px;
+    font-family: "Baloo 2", sans-serif;
+    color: #4F759B;
+    font-weight: bold;
+}
+
+.option{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.option select{
+    border: 1px solid #4F759B;
+    font-family: "Baloo 2", sans-serif;
+    background-color: #f6f7f2;
+    color: #4F759B;
+    height: 40px;
+    width: 150px;
+    margin-right: 30px;
+}
+
+.option :first-child {
+    background-color: #CDCEED;
+    border: none;
+    border-radius: 10px;
+}
+
+.option select:focus{
+    outline: none;
+}
+
