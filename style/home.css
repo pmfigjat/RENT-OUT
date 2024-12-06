@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    height: 650px;
+}
+
+.bg{
+    height: 600px;
+    background-color: #92c9b1;
+}
+
+.nav-bar{
+    width: 800px;
+    height: 80px;
+    align-self: center;
+    justify-self: center;
+    background-color: #fff;
+}
+
+.search-inputs{
+    justify-self: center;
+}
+
+.search{
+    width: 700px;
+    background-color: #fff;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.inputs{
+    display: flex;
+    justify-content: center;
+}
+
+.name_input{
+    margin-right: 15px;
+}
+
+.inputs h3 {
+    font-size: 24px;
+    color: #4F759B;
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+.inputs input {
+    border: none;
+    font-size: 14px;
+    border-bottom: solid 1px #4f759b;
+    color: #4F759B;
+    height: 40px;
+    width: 250px;
+}
+
+.inputs input:focus{
+    box-shadow: none;
+    border: none;
+    border-bottom: solid 1px #4f759b;
+    outline: none;
+}
+
+.inputs input::placeholder{
+    color: #4F759B;
+    font-size: 14px;
+}
+
+.buttons-searcher button{
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+#search {
+    background-color: #4F759B;
+    border: #4F759B solid 1px;
+    color: #fff;
+    font-size: 14px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: bold;
+}
+
+#search:hover {
+    background-color: #fff;
+    color: #4F759B;
+}
+
+#clear {
+    font-size: 14px;
+    font-family: "Baloo 2", sans-serif;
+    color: #4F759B;
+    font-weight: bold;
+}
