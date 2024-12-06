@@ -42,6 +42,12 @@ body{
     height: 300px;
 }
 
+#form{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+ }
+
 .main-container h2 {
     margin-top: 15px;
     color: #92C9B1;
