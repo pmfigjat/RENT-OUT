@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: "Baloo 2", sans-serif;
 }
 body{
     min-height: 2500px;
@@ -148,19 +149,23 @@ body{
 }
 
 .container-1{
+    margin-top: 50px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items:center ;
     
 }
+.products {
+    display: flex;
+    justify-content: space-around;
+}
 
 .product-section{
-    width: 900px;
+    width: 1050px;
     height: 500px;
     display: flex;
     align-self: center;
-    background-color: #4F759B;
 }
 
 .product{
@@ -229,4 +234,95 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 height: 130px;
+}
+
+.pR{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Baloo 2", sans-serif;
+    color: #92c9b1;
+}
+
+.container-2{
+    max-width: 950px;
+    height: 600px;
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dadad8;
+}
+.background1{
+    background-color: #d9d9d9;
+    padding: 30px;
+    width: 400px;
+}
+
+.background1 h2{
+    line-height: 1.3;
+    font-size: 50px;
+    font-family: "Baloo 2", sans-serif;
+    color: #4F759B;
+    font-weight: bold;
+}
+
+.background1 p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-family: "Baloo 2", sans-serif;
+    color: #4F759B;
+}
+
+.form{
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 250px;
+    align-items: center;
+    transform: translateY(-50%);
+}
+
+.form h3 {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #4F759B;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.form input{
+    margin-top: 10px;
+    padding-left: 5px;
+    height: 45px;
+    width: 200px;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 14px;
+    border: solid 1px #ccc;
+}
+
+.form input:focus{
+    box-shadow: none;
+    outline: none;
+   
+}
+
+.form button{
+    margin-top: 20px;
+    width: 100%;
+    height: 30px;
+    background-color: #4F759B;
+    color: #fff;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #4F759B;
+    border-radius: 5px;
+}
+
+.picture{
+    position: absolute;
+    top: 7%;
+    right: -10%;
 }
