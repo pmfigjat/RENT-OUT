@@ -26,7 +26,9 @@ body{
     justify-self: center;
     background-color: #fff;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 
@@ -53,6 +55,31 @@ body{
     color: #7A7D7C;
     font-family: "Baloo 2", sans-serif;
     font-size: 18px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.icon{
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: #92C9B1;
+    border-radius: 20px;
+    border: solid 1px #92C9B1;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown-content{
+    position: absolute; 
+    display: none;
+    background-color: #fff;
+    padding: 10px;
 }
 
 .hero{

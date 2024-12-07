@@ -1,0 +1,295 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+.header h2 {
+
+    font-family: "Baloo 2", sans-serif;
+    color: #92C9B1;
+    border: 3px solid #92C9B1;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 90%;
+
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.links a {
+    text-decoration: none;
+    color: #7A7D7C;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 18px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.icon{
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: #92C9B1;
+    border-radius: 20px;
+    border: solid 1px #92C9B1;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown-content{
+    position: absolute; 
+    display: none;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.hero{
+    margin-top: 10px;
+    height: 430px;
+    padding-left: 100px;
+    background-color: #92C9B1;
+    display: flex;
+    align-items: center;
+}
+
+.content1 {
+    width: 640px;
+    
+}
+
+.content1 h2 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 550;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.search{
+    height: 130px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.inputs{
+    display: flex;
+
+}
+
+.name_input{
+    margin-right: 15px;
+}
+
+.inputs h3 {
+    font-size: 24px;
+    color: #4F759B;
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+.inputs input {
+    border: none;
+    font-size: 14px;
+    border-bottom: solid 1px #4f759b;
+    color: #4F759B;
+    height: 40px;
+    width: 250px;
+}
+
+.inputs input:focus{
+    box-shadow: none;
+    border: none;
+    border-bottom: solid 1px #4f759b;
+    outline: none;
+}
+
+.inputs input::placeholder{
+    color: #4F759B;
+    font-size: 14px;
+}
+
+.buttons-searcher button{
+    width: 100px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+#search {
+    background-color: #4F759B;
+    border: #4F759B solid 1px;
+    color: #fff;
+    font-size: 14px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: bold;
+}
+
+#search:hover {
+    background-color: #fff;
+    color: #4F759B;
+}
+
+
+.container1 {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 390px;
+}
+
+.container1 h2 {
+    color: #92C9B1;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.upper-part{
+    width: 950px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.images {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.first{
+    width: 400px;
+    height: 185px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container1 h4{
+    color: #92C9B1;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.container1 p {
+    font-family: "Baloo 2", sans-serif;
+    color: #393b62;
+}
+
+.bottom-part{
+    width: 950px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.second{
+    width: 400px;
+    height: 185px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: end;
+}
+
+.third{
+    width: 400px;
+    height: 185px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container2 {
+    margin-top: 50px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    padding-left: 20%;
+    background-color: #f8f8f8;
+}
+
+.why-rentOut{
+    width: 400px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.why-rentOut h3 {
+    font-size: 24px;
+    font-family: "Baloo 2", sans-serif;
+    color: #92C9B1;
+    font-weight: 550;
+}
+
+.why-rentOut p {
+    font-size: 18px;
+    color: #393b62;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.container3{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.container3 h3{
+    font-size: 24px;
+    font-family: "Baloo 2", sans-serif;
+    color: #92C9B1;
+    font-weight: 550;
+}
+
+.question {
+    color: #92C9B1;
+    font-size: 20px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 500;
+}
+
+.answer{
+    color: #393b62;
+    font-size: 16px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 400;
+}
