@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 90%;
+
+}
+
+.header h2 {
+
+    font-family: "Baloo 2", sans-serif;
+    color: #92C9B1;
+    border: 3px solid #92C9B1;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.links a {
+    text-decoration: none;
+    color: #7A7D7C;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 18px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.icon{
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: #92C9B1;
+    border-radius: 20px;
+    border: solid 1px #92C9B1;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown-content{
+    position: absolute; 
+    display: none;
+    background-color: #fff;
+    padding: 10px;
+}
+
+
+.container1{
+    width: 600px;
+    height: 600px;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+    border: solid 2px #92C9B1;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.name_input{
+    margin-right: 15px;
+}
+
+.inputs h3 {
+    font-size: 24px;
+    color: #92C9B1;
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+.inputs input {
+    border: none;
+    font-size: 14px;
+    border-bottom: solid 1px #92C9B1;
+    color: #92C9B1;
+    height: 40px;
+    width: 250px;
+    padding-right: 5px;
+    
+}
+
+#p_description{
+    width: 100%;
+}
+
+#priceH, #priceD{
+    width: 120px;
+}
+
+.inputs input:focus{
+    box-shadow: none;
+    border: none;
+    border-bottom: solid 1px #92C9B1;
+    outline: none;
+}
+
+.inputs input::placeholder{
+    color: #92C9B1;
+    font-size: 14px;
+}
+ select{
+    border: 1px solid #92C9B1;
+    font-family: "Baloo 2", sans-serif;
+    background-color: #f6f7f2;
+    color: #92C9B1;
+    height: 40px;
+    width: 125px;
+    margin-right: 30px;
+}
+
+ select:focus{
+    outline: none;
+}
+
+
