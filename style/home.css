@@ -4,7 +4,6 @@
     font-family: "Baloo 2", sans-serif;
 }
 body{
-    min-height: 2500px;
     height: fit-content;
 }
 
@@ -278,6 +277,7 @@ height: 130px;
     margin: 0 auto;
     padding: 20px;
     background-color: #dadad8;
+    margin-bottom: 50px;
 }
 .background1{
     background-color: #d9d9d9;
