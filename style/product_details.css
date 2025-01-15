@@ -80,21 +80,24 @@ nav {
 
 
 .search{
+    border: 1px solid red;
+    padding: 15px;
+    width: 70%;     
     margin-top: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    justify-self: center;
     
 }
 
 .inputs{
+    
     display: flex;
-
+    width: 50%;
+    justify-content: space-between;
 }
 
-.name_input{
-    margin-right: 15px;
-}
 
 .inputs h3 {
     font-size: 24px;
@@ -124,8 +127,15 @@ nav {
     font-size: 14px;
 }
 
+.buttons-searcher {
+    
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
 .buttons-searcher button{
-    width: 100px;
+    width: 45%;
     height: 40px;
     outline: none;
     border: none;
@@ -155,8 +165,11 @@ nav {
 }
 
 .option{
+
     display: flex;
-    justify-content: center;
+    width: 40%;
+    justify-self: center;
+    justify-content: space-around;
     margin-top: 50px;
 }
 
@@ -166,8 +179,7 @@ nav {
     background-color: #f6f7f2;
     color: #4F759B;
     height: 40px;
-    width: 150px;
-    margin-right: 30px;
+    width: 23%;
 }
 
 .option :first-child {
@@ -181,20 +193,23 @@ nav {
 }
 
 .products {
+    margin-top: 30px;
+    width: 70%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     justify-self: center;
-    margin-right: 30px;
+    flex-wrap: wrap;
+    
 }
 
 .product{
+    margin-top: 10px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-        width: 300px; 
+        width: 30%; 
         height: 400px;
-        margin: 15px;
         border: 1px solid #ddd; 
         border-radius: 8px; 
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
@@ -211,7 +226,7 @@ nav {
 }
 
 .product-image{
-    width: 300px;
+    width: 90%;
     height: 250px;
 }
 

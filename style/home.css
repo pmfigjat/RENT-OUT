@@ -176,32 +176,40 @@ body{
 }
 
 .container-1{
+    border: 1px solid red;
     margin-top: 50px;
-    width: 100%;
+    width: 90%;
+    justify-self: center;
     display: flex;
     flex-direction: column;
     align-items:center ;
     
 }
 .products {
+    border: 1px solid #ccc;
+    width: 90%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    justify-self: center;
 }
 
 .product-section{
-    width: 1050px;
+    border: 1px solid blue;
+    width: 80%;
     height: 500px;
     display: flex;
     align-self: center;
+    justify-content: center;
 }
 
 .product{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    width: 300px; 
+    width: 30%; 
     height: 400px;
-    margin: 15px;
     border: 1px solid #ddd; 
     border-radius: 8px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
