@@ -17,15 +17,15 @@
        <nav>
         <h2>RENT OUT</h2>
         <div class="links">
-            <a href="home.html">Home</a>
-            <a href="more_products.html">More Products</a>
-            <a href="how_it_works.html">How It Works</a>
+            <a href="home.php">Home</a>
+            <a href="product_details.php">More Products</a>
+            <a href="how_it_works.php">How It Works</a>
             <div class="dropdown">
                 <button class="icon"><i class="fa-solid fa-user"></i></button><br>
                 <div class="dropdown-content">
-                    <a href="SignIn.html">Sign In</a><br>
-                    <a href="logIn.html">Log In</a><br>
-                    <a href="dashboard.html">Dashboard</a>
+                    <a href="SignIn.php">Sign In</a><br>
+                    <a href="login.php">Log In</a><br>
+                    <a href="dashboard.php">Dashboard</a>
                 </div>
              </div>
         </div>
