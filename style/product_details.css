@@ -80,12 +80,11 @@ nav {
 
 
 .search{
-    border: 1px solid red;
     padding: 15px;
     width: 70%;     
     margin-top: 50px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     justify-self: center;
     
@@ -128,10 +127,9 @@ nav {
 }
 
 .buttons-searcher {
-    
-    width: 30%;
+    width: 40%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .buttons-searcher button{
@@ -158,10 +156,17 @@ nav {
 }
 
 #clear {
+    border: 1px solid #4F759B;
+    border-radius: 2px;
     font-size: 14px;
     font-family: "Baloo 2", sans-serif;
     color: #4F759B;
     font-weight: bold;
+}
+
+#clear:hover {
+    background-color: #4F759B;
+    color: #fff;
 }
 
 .option{

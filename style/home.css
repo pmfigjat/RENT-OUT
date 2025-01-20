@@ -20,21 +20,21 @@ body{
 }
 
 .nav-bar{
-    width: 800px;
+    border: 1px solid red;
+    width: 60%;
     height: 80px;
-    align-self: center;
     justify-self: center;
     background-color: #fff;
     display: flex;
     justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
+    align-items: center;
+   padding-left: 10px;
+   padding-right: 10px;
 }
 
 
 
 .nav-bar h2 {
-    margin-top: 15px;
     font-family: "Baloo 2", sans-serif;
     color: #92C9B1;
     border: 3px solid #92C9B1;
@@ -44,7 +44,6 @@ body{
 }
 
 .links {
-    margin-top: 25px;
     display: flex;
     justify-content: space-between;
     width: 50%;
@@ -64,7 +63,7 @@ body{
 .icon{
     font-size: 20px;
     width: 35px;
-    height: 35px;
+    height: auto;
     background-color: #92C9B1;
     border-radius: 20px;
     border: solid 1px #92C9B1;
@@ -95,27 +94,29 @@ body{
 }
 
 .search-inputs{
+    width: 50%;
     justify-self: center;
+    display: flex;
+    justify-content: center;
 }
 
 .search{
-    width: 700px;
+    padding: 10px 0;
+    width: 100%;
     background-color: #fff;
-    margin-top: -50px;
     display: flex;
-    justify-content: center;
+    margin-top: -50px;
+    justify-content: space-around;
     align-items: center;
-    padding: 10px;
 }
 
 .inputs{
+    width: 60%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.name_input{
-    margin-right: 15px;
-}
+
 
 .inputs h3 {
     font-size: 24px;
@@ -130,7 +131,6 @@ body{
     border-bottom: solid 1px #4f759b;
     color: #4F759B;
     height: 40px;
-    width: 250px;
 }
 
 .inputs input:focus{

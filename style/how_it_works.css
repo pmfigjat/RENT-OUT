@@ -83,7 +83,6 @@ nav {
 
 .content1 {
     width: 640px;
-    
 }
 
 .content1 h2 {
@@ -164,12 +163,13 @@ nav {
 
 
 .container1 {
+    width: 70%;
     margin-top: 50px;
+    justify-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 390px;
 }
 
 .container1 h2 {
@@ -180,20 +180,20 @@ nav {
 }
 
 .upper-part{
-    width: 950px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 .images {
-    width: 400px;
+    width: 45%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
 .first{
-    width: 400px;
+    width: 45%;
     height: 185px;
     display: flex;
     flex-direction: column;
@@ -213,13 +213,13 @@ nav {
 }
 
 .bottom-part{
-    width: 950px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 .second{
-    width: 400px;
+    width: 45%;
     height: 185px;
     display: flex;
     flex-direction: column;
@@ -228,7 +228,7 @@ nav {
 }
 
 .third{
-    width: 400px;
+    width: 45%;
     height: 185px;
     display: flex;
     flex-direction: column;
@@ -240,12 +240,12 @@ nav {
     height: 400px;
     display: flex;
     align-items: center;
-    padding-left: 20%;
     background-color: #f8f8f8;
+    justify-content: center;
 }
 
 .why-rentOut{
-    width: 400px;
+    width: 60%;
     height: 250px;
     display: flex;
     flex-direction: column;
