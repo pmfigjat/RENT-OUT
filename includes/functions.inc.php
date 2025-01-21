@@ -8,8 +8,8 @@ function emptyInputSignup($username, $email, $password,) {
     }
 }
 
-function createUser($conn, $email, $name, $psw) {
-    $sql = "INSERT INTO users (name, email, psw) VALUES (?, ?, ?, ?);";
+function createUser($conn, $name, $email, $psw) {
+    $sql = "INSERT INTO users (name, email, psw) VALUES  (?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -18,7 +18,7 @@ function createUser($conn, $email, $name, $psw) {
     }
 
     $hashedpsw = password_hash($psw, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "ssss", $email, $name, $hashedpsw);
+    mysqli_stmt_bind_param($stmt, "sss", $email, $name, $hashedpsw);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../home.php?error=none");
