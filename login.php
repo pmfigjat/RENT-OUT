@@ -17,7 +17,7 @@
     <main>
         <div class="main-container">
             <h2>Log In!</h2>
-            <form id="form">
+            <form id="form" action="includes/SignIn.inc.php" method="post" >
                 <input type="email" name="email" id="email" placeholder="Email...">
                 <input type="password" name="password" id="password" placeholder="Your password...">
                 <button type="submit">Sign Up!</button>

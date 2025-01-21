@@ -1,8 +1,15 @@
 <?php
+<<<<<<< HEAD
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     echo "<h2>Form Submitted via POST</h2>";
     echo "<pre>";
     print_r($_GET);
+=======
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    echo "<h2>Form Submitted via POST</h2>";
+    echo "<pre>";
+    print_r($_POST);
+>>>>>>> 980a5fcd9e237336e14798b0963d62ddf8397a2f
     echo "</pre>";
 } else {
     echo "<h2>Form was NOT submitted via POST</h2>";

@@ -17,11 +17,11 @@
     <main>
         <div class="main-container">
             <h2>Sign Up!</h2>
-            <form id="form">
-                <input type="email" name="email" id="email" placeholder="Email...">
-                <input type="text" name="name" id="name" placeholder="Name...">
-                <input type="password" name="password" id="password" placeholder="Your password...">
-                <button type="submit">Sign Up!</button>
+            <form id="form" action="includes/SignIn.inc.php" method="post">
+                <input type="email" name="email" placeholder="Email..." >
+                <input type="text" name="name" placeholder="Name..." >
+                <input type="password" name="password" placeholder="Your password..." >
+                <button type="submit" name="submit">Sign Up!</button>
             </form>
             <hr>
             <p>Already have an account?<a href="logIn.html">  Log In!</a></p>
