@@ -17,13 +17,13 @@
     <main>
         <div class="main-container">
             <h2>Log In!</h2>
-            <form id="form" action="includes/SignIn.inc.php" method="post" >
+            <form id="form" action="includes/login.inc.php" method="post" >
                 <input type="email" name="email" id="email" placeholder="Email...">
                 <input type="password" name="password" id="password" placeholder="Your password...">
-                <button type="submit">Sign Up!</button>
+                <button type="submit" name="submit">Log In!</button>
             </form>
             <hr>
-            <p>Dont have an account?<a href="SignIn.html">  Sign Up!</a></p>
+            <p>Dont have an account?<a href="SignIn.php">  Sign Up!</a></p>
         </div>
 
         <div class="container2">

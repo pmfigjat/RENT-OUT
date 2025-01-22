@@ -24,7 +24,7 @@
                 <button type="submit" name="submit">Sign Up!</button>
             </form>
             <hr>
-            <p>Already have an account?<a href="logIn.html">  Log In!</a></p>
+            <p>Already have an account?<a href="login.php">  Log In!</a></p>
         </div>
 
         <div class="container2">

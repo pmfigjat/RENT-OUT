@@ -1,12 +1,54 @@
 <?php
 
 function emptyInputSignup($username, $email, $password,) {
-    if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
+    if (empty($username) || empty($email) || empty($password)) {
         return true; // Returns true if any field is empty
     } else {
         return false; // Returns false if all fields are filled
     }
 }
+function invalidName($username): bool {
+    if (!preg_match("/^[a-zA-Z]*$/", $username)) {
+        return true; 
+    } else {
+        return false; 
+    }
+}
+
+function invalidEmail($email): bool {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return true; 
+    } else {
+        return false; 
+    }
+}
+
+function emailExist($conn, $email)  {
+    $sql = "SELECT * FROM users WHERE email = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    
+    if (!mysqli_stmt_prepare($stmt, $sql)) {  // Fix here
+        header("location: ../SignIn.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        return $row; // Email exists, return user data
+    } else {
+        return false; // Email doesn't exist
+    }
+
+    mysqli_stmt_close($stmt); // Close the statement
+}
+
+
+
+
 
 function createUser($conn, $name, $email, $psw) {
     $sql = "INSERT INTO users (name, email, psw) VALUES  (?, ?, ?);";
@@ -18,7 +60,7 @@ function createUser($conn, $name, $email, $psw) {
     }
 
     $hashedpsw = password_hash($psw, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "sss", $email, $name, $hashedpsw);
+    mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashedpsw);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../home.php?error=none");
