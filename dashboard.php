@@ -36,7 +36,7 @@
     <main>
         <div class="topcontent">
             <h2>*User name*</h2>
-            <a href="add_product.html"><i class="fa-regular fa-plus"></i> Add a product</a>
+            <a href="add_product.php"><i class="fa-regular fa-plus"></i> Add a product</a>
         </div>
 
 
