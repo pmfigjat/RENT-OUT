@@ -32,7 +32,7 @@
                                 <?php
                                     if(isset($_SESSION["userID"])) {
                                         echo "<a href='dashboard.php'>Profile</a><br>";
-                                        echo "<a href='dashboard.php'>Log Out!</a><br>";
+                                        echo "<a href='includes/logout.inc.php'>Log Out!</a><br>";
                                     } else {
                                         echo "<a href='SignIn.php'>Sign In</a><br>";
                                         echo "<a href='login.php'>Log In</a><br>";

@@ -85,14 +85,14 @@ function logInUser($conn, $email, $psw) {
         exit();
     }
     
-    if(!(password_hash($psw, PASSWORD_DEFAULT) !== $emailexist["psw"])) {
+    $pswH = $emailexist["psw"];
+
+
+    
+    if (!password_verify($psw, $pswH)) {
         header("Location: ../login.php?error=wrongLogIn2");
         exit();
     }
-    // if (!password_verify($psw, $pswHashed)) {
-    //     header("Location: ../login.php?error=wrongLogIn2");
-    //     exit();
-    // }
 
     session_start();
     $_SESSION["userID"] = $emailexist["userID"];

@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +28,16 @@
              <div class="dropdown">
                 <button class="icon"><i class="fa-solid fa-user"></i></button><br>
                 <div class="dropdown-content">
-                    <a href="SignIn.php">Sign In</a><br>
-                    <a href="login.php">Log In</a><br>
-                    <a href="dashboard.php">Dashboard</a>
-                </div>
+                                <?php
+                                    if(isset($_SESSION["userID"])) {
+                                        echo "<a href='dashboard.php'>Profile</a><br>";
+                                        echo "<a href='includes/logout.inc.php'>Log Out!</a><br>";
+                                    } else {
+                                        echo "<a href='SignIn.php'>Sign In</a><br>";
+                                        echo "<a href='login.php'>Log In</a><br>";
+                                    }
+                                ?>
+                     </div>
              </div>
          </div>
         </nav> 
