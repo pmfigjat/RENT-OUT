@@ -6,4 +6,15 @@ if(isset($_POST["submit"])) {
 
     require_once 'functions.inc.php';
     require_once 'dbh.inc.php';
+
+    if (emptyInputLogIn($email, $psw) !== false) {
+        header("location: ../login.php?error=emptyinput");
+        exit();
+    }
+
+    logInUser($conn, $email, $psw);
+}
+else {
+    header("Location: ../login.php");
+    exit();
 }

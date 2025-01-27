@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +39,11 @@
     </header>
     <main>
         <div class="topcontent">
-            <h2>*User name*</h2>
+            <?php
+                if(isset($_SESSION["userID"])) {
+                    echo "<h2>" . $_SESSION["name"] . "</h2>"; 
+                }
+            ?>
             <a href="add_product.php"><i class="fa-regular fa-plus"></i> Add a product</a>
         </div>
 

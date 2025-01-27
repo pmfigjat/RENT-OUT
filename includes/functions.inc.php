@@ -23,12 +23,12 @@ function invalidEmail($email): bool {
     }
 }
 
-function emailExist($conn, $email)  {
+function emailExist($conn, $email): array|bool|null {
     $sql = "SELECT * FROM users WHERE email = ?;";
     $stmt = mysqli_stmt_init($conn);
-    
-    if (!mysqli_stmt_prepare($stmt, $sql)) {  // Fix here
-        header("location: ../SignIn.php?error=stmtfailed");
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../SignIn.php?error=stmtfailed");
         exit();
     }
 
@@ -37,14 +37,15 @@ function emailExist($conn, $email)  {
 
     $resultData = mysqli_stmt_get_result($stmt);
 
-    if ($row = mysqli_fetch_assoc($resultData)) {
-        return $row; // Email exists, return user data
+    if (($row = mysqli_fetch_assoc($resultData)) !== null) {
+        mysqli_stmt_close($stmt); // Close before returning
+        return $row;  // Email exists, return user data
     } else {
+        mysqli_stmt_close($stmt); // Close before returning
         return false; // Email doesn't exist
     }
-
-    mysqli_stmt_close($stmt); // Close the statement
 }
+
 
 
 
@@ -66,3 +67,37 @@ function createUser($conn, $name, $email, $psw) {
     header("location: ../home.php?error=none");
         exit();
 }
+
+
+function emptyInputLogIn($email, $password,) {
+    if (empty($email) || empty($password)) {
+        return true; // Returns true if any field is empty
+    } else {
+        return false; // Returns false if all fields are filled
+    }
+}
+
+function logInUser($conn, $email, $psw) {
+    $emailexist = emailExist($conn, $email);
+
+    if (!$emailexist) {
+        header("Location: ../login.php?error=wrongLogIn1");
+        exit();
+    }
+    
+    if(!(password_hash($psw, PASSWORD_DEFAULT) !== $emailexist["psw"])) {
+        header("Location: ../login.php?error=wrongLogIn2");
+        exit();
+    }
+    // if (!password_verify($psw, $pswHashed)) {
+    //     header("Location: ../login.php?error=wrongLogIn2");
+    //     exit();
+    // }
+
+    session_start();
+    $_SESSION["userID"] = $emailexist["userID"];
+    $_SESSION["name"] = $emailexist["name"];
+    header("Location: ../home.php");
+    exit();
+}
+
