@@ -43,13 +43,14 @@ session_start();
 
  <main>
     <div class="container1">
+        <form method="POST" action="includes/add_product.inc.php">
         <div class="inputs">
-            <input type="text" id="p_name" placeholder="Product name"><br>
-            <input type="text" id="p_loc" placeholder="Location"><br>
-            <input type="text" id="p_description" placeholder="Product Description"><br>
+            <input type="text" id="p_name" name="p_name" placeholder="Product name"><br>
+            <input type="text" id="p_loc" name="p_loc" placeholder="Location"><br>
+            <input type="text" id="p_description" name="p_description" placeholder="Product Description"><br>
             <div class="price">
-                <input type="number"  id="priceH" placeholder="Price per hour">
-                <input type="number" id="priceD" placeholder="Price per day">
+                <input type="number"  id="priceH" name="priceH" placeholder="Price per hour">
+                <input type="number" id="priceD" name="priceD" placeholder="Price per day">
             </div>
             <select name="condition" id="condition">
                 <option value="condition">Condition</option>
@@ -59,9 +60,10 @@ session_start();
             </select><br>
             <input type="file" name="image" id="image" accept="image/*">
             
-            <button type="submit" id="btn"><i class="fa-regular fa-plus"></i> Add a product</button>
+            <button type="submit" name="submit" id="btn"><i class="fa-regular fa-plus"></i> Add a product</button>
             
         </div>
+        </form>
     </div>
  </main>
 <script src="js/add_product.js"></script>

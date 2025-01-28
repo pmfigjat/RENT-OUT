@@ -101,3 +101,20 @@ function logInUser($conn, $email, $psw) {
     exit();
 }
 
+function createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition) {
+    $sql = "INSERT INTO products (name, creator_id, location, description, price_per_hour, price_per_day, conditions ) VALUES  (?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../SignIn.php?error=stmtfailed");
+        exit();
+    }
+
+
+    mysqli_stmt_bind_param($stmt, "sssssss", $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../home.php?error=none");
+        exit();
+}
+
