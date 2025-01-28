@@ -20,7 +20,6 @@ body{
 }
 
 .nav-bar{
-    border: 1px solid red;
     width: 60%;
     height: 80px;
     justify-self: center;
@@ -44,6 +43,7 @@ body{
 }
 
 .links {
+    border: 1px solid blue;
     display: flex;
     justify-content: space-between;
     width: 50%;
@@ -178,7 +178,7 @@ body{
 }
 
 .container-1{
-    border: 1px solid red;
+
     margin-top: 50px;
     width: 90%;
     justify-self: center;
