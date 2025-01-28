@@ -43,7 +43,6 @@ body{
 }
 
 .links {
-    border: 1px solid blue;
     display: flex;
     justify-content: space-between;
     width: 50%;
@@ -198,7 +197,6 @@ body{
 }
 
 .product-section{
-    border: 1px solid blue;
     width: 80%;
     height: 500px;
     display: flex;
