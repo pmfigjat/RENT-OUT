@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    require_once 'includes/dbh.inc.php';
+    require_once 'includes/functions.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -71,56 +74,36 @@
         <div class="container-1">
             <h1 class="pR">Products to rent</h1>
             <div class="product-section">
-                <div class="arrow-left"></div>
-                <div class="products">
-                    <div class="product" id="product1">
-                        <div class="product-image">
-                            <img src="" alt="product image">
-                        </div>
-                    
-                        <div class="product-info">
-                            <h3>*product name*</h3>
-                            <p class="rented">*time rented*</p>
-                            <hr>
-                            <div class="lastpart">
-                                <p class="product-price">*product price*</p>
-                                <button class="btn-view">view</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product" id="product2">
-                        <div class="product-image">
-                            <img src="" alt="product image">
-                        </div>
-                    
-                        <div class="product-info">
-                            <h3>*product name*</h3>
-                            <p class="rented">*time rented*</p>
-                            <hr>
-                            <div class="lastpart">
-                                <p class="product-price">*product price*</p>
-                                <button class="btn-view">view</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product" id="product3">
-                        <div class="product-image">
-                            <img src="" alt="product image">
-                        </div>
-                    
-                        <div class="product-info">
-                            <h3>*product name*</h3>
-                            <p class="rented">*time rented*</p>
-                            <hr>
-                            <div class="lastpart">
-                                <p class="product-price">*product price*</p>
-                                <button class="btn-view">view</button>
-                            </div>
-                        </div>
+        <div class="arrow-left"></div>
+        <div class="products">
+            <?php
+            // Fetch all products
+            $products = getProducts($conn);
+
+            // Limit to 3 products
+            $limit = 3;
+
+            // Loop through products and display only 3
+            for ($i = 0; $i < $limit && $i < count($products); $i++):
+                $product = $products[$i];
+            ?>
+            <div class="product" id="product<?php echo $i + 1; ?>">
+                <div class="product-image">
+                    <img src="path/to/image/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" />
+                </div>
+                <div class="product-info">
+                    <h3><?php echo $product['name']; ?></h3>
+                    <p class="rented">Condtion: <?php echo $product['conditions']; ?></p>
+                    <hr />
+                    <div class="lastpart">
+                        <p class="product-price">$<?php echo $product['price_per_hour']; ?> / hour</p>
+                        <button class="btn-view">View</button>
                     </div>
                 </div>
-                <div class="arrow-right"></div>
             </div>
+            <?php endfor; ?>
+        </div>
+    </div>
         </div>
 
         <div class="container-2">

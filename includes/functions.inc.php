@@ -118,3 +118,41 @@ function createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH,
         exit();
 }
 
+
+function getProducts($conn) {
+    $sql = "SELECT * From products";
+    $result = mysqli_query($conn, $sql);
+
+    if(!$result) {
+        die("Query failed: ". mysqli_error($conn));
+    }
+
+    $products = [];
+
+    while($row = mysqli_fetch_assoc($result)) {
+        $products[] = $row;
+    }
+
+    return $products;
+}
+
+function getUserProduct($conn, $userID) {
+    $sql = "SELECT * from products where creator_id = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../home.php?error=getUserProducts");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $userID);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    mysqli_stmt_close($stmt);
+
+    return $products;
+}
+

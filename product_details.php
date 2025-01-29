@@ -1,6 +1,11 @@
 <?php
 
 session_start();
+
+require_once 'includes/dbh.inc.php';
+require_once 'includes/functions.inc.php';
+
+$allProducts = getProducts($conn)
 ?>
 
 
@@ -92,67 +97,31 @@ session_start();
         </div>
         
         <div class="products">
-            <div class="product" id="product1">
-                <div class="product-image">
-                    <img src="" alt="product image">
-                </div>
-            
-                <div class="product-info">
-                    <h3>*product name*</h3>
-                    <p class="rented">*time rented*</p>
-                    <hr>
-                    <div class="lastpart">
-                        <p class="product-price">*product price*</p>
-                        <button class="btn-view">view</button>
+            <?php
+            // Check if there are products
+            if (!empty($allProducts)) {
+                foreach ($allProducts as $product) {
+                    ?>
+                    <div class="product" id="product">
+                        <div class="product-image">
+                            <img src="img/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
+                        </div>
+                        <div class="product-info">
+                            <h3><?php echo $product['name']; ?></h3>
+                            <p class="rented">Condition: <?php echo $product['conditions']; ?> days</p>
+                            <hr>
+                            <div class="lastpart">
+                                <p class="product-price">$<?php echo $product['price_per_day']; ?> per day</p>
+                                <a href="product_details.php?id=<?php echo $product['ProductID']; ?>" class="btn-view">View</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="product" id="product2">
-                <div class="product-image">
-                    <img src="" alt="product image">
-                </div>
-            
-                <div class="product-info">
-                    <h3>*product name*</h3>
-                    <p class="rented">*time rented*</p>
-                    <hr>
-                    <div class="lastpart">
-                        <p class="product-price">*product price*</p>
-                        <button class="btn-view">view</button>
-                    </div>
-                </div>
-            </div>
-            <div class="product" id="product2">
-                <div class="product-image">
-                    <img src="" alt="product image">
-                </div>
-            
-                <div class="product-info">
-                    <h3>*product name*</h3>
-                    <p class="rented">*time rented*</p>
-                    <hr>
-                    <div class="lastpart">
-                        <p class="product-price">*product price*</p>
-                        <button class="btn-view">view</button>
-                    </div>
-                </div>
-            </div>
-            <div class="product" id="product4">
-                <div class="product-image">
-                    <img src="" alt="product image">
-                </div>
-            
-                <div class="product-info">
-                    <h3>*product name*</h3>
-                    <p class="rented">*time rented*</p>
-                    <hr>
-                    <div class="lastpart">
-                        <p class="product-price">*product price*</p>
-                        <button class="btn-view">view</button>
-                    </div>
-                </div>
-            </div>
-            
+                    <?php
+                }
+            } else {
+                echo "<p>No products available at the moment.</p>";
+            }
+            ?>
         </div>
         
     </main>

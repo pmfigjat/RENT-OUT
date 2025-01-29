@@ -1,5 +1,12 @@
 <?php
     session_start();
+
+    $userID = $_SESSION["userID"];
+
+    require_once 'includes/dbh.inc.php';
+    require_once 'includes/functions.inc.php';
+
+    $userProducts = getUserProduct($conn, $userID);
 ?>
 
 <!DOCTYPE html>
@@ -55,53 +62,27 @@
 
 
         <div class="products">
-            <div class="product" id="product1">
+        <?php if (!empty($userProducts)): ?>
+            <?php foreach ($userProducts as $product): ?>
+            <div class="product">
                 <div class="product-image">
-                    <img src="" alt="product image">
+                    <img src="path/to/image/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
                 </div>
-            
                 <div class="product-info">
-                    <h3>*product name*</h3>
-                    <p class="rented">*time rented*</p>
+                    <h3><?php echo $product['name']; ?></h3>
+                    <p class="rented">Time rented: <?php echo $product['conditions']; ?></p>
                     <hr>
                     <div class="lastpart">
-                        <p class="product-price">*product price*</p>
-                        <button class="btn-view">view</button>
+                        <p class="product-price">Price: $<?php echo $product['price_per_day']; ?></p>
+                        <button class="btn-view">View</button>
                     </div>
                 </div>
             </div>
-            <div class="product" id="product2">
-                <div class="product-image">
-                    <img src="" alt="product image">
-                </div>
-            
-                <div class="product-info">
-                    <h3>*product name*</h3>
-                    <p class="rented">*time rented*</p>
-                    <hr>
-                    <div class="lastpart">
-                        <p class="product-price">*product price*</p>
-                        <button class="btn-view">view</button>
-                    </div>
-                </div>
-            </div>
-            <div class="product" id="product2">
-                <div class="product-image">
-                    <img src="" alt="product image">
-                </div>
-            
-                <div class="product-info">
-                    <h3>*product name*</h3>
-                    <p class="rented">*time rented*</p>
-                    <hr>
-                    <div class="lastpart">
-                        <p class="product-price">*product price*</p>
-                        <button class="btn-view">view</button>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No products uploaded yet. <a href="add_product.php">Add a product</a>.</p>
+        <?php endif; ?>
+    </div>
     </main>
 </body>
 </html>
