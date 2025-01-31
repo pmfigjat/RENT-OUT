@@ -235,11 +235,17 @@ nav {
     text-align: center;
 }
 
-.product-image{
-    width: 90%;
+.product-image {
+    width: 300px;
     height: 250px;
-}
-
+    
+    }
+    
+    .product-image img {
+        width: 300px;
+        height: 250px;
+        
+        }
 .product h3{
     font-size: 24px;
     color: #4F759B;

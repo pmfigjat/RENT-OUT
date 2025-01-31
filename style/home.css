@@ -215,7 +215,7 @@ body{
     overflow: hidden; 
     background-color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 5px;
+    padding: 10px;
 }
 
 .lastpart{
@@ -224,10 +224,31 @@ flex-direction: row;
 justify-content: space-between;
 }
 
-.product-image{
+.lastpart a {
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-view{
+    width: 50px;
+    background-color: #4F759B;
+    font-family: "Baloo 2", sans-serif;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.product-image {
 width: 300px;
 height: 250px;
+
 }
+
+.product-image img {
+    width: 300px;
+    height: 250px;
+    
+    }
 
 .product h3{
 font-size: 24px;
@@ -244,15 +265,7 @@ font-weight: 500;
 font-family: "Baloo 2", sans-serif;
 }
 
-.btn-view{
-width: 50px;
-height: 20px;
-background-color: #4F759B;
-font-family: "Baloo 2", sans-serif;
-border: none;
-border-radius: 5px;
-color: #fff;
-}
+
 
 .product-info hr{
 width: 90%;

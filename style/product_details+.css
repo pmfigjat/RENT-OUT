@@ -1,0 +1,172 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 90%;
+
+}
+
+.header h2 {
+
+    font-family: "Baloo 2", sans-serif;
+    color: #92C9B1;
+    border: 3px solid #92C9B1;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.links a {
+    text-decoration: none;
+    color: #7A7D7C;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 18px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.icon{
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: #92C9B1;
+    border-radius: 20px;
+    border: solid 1px #92C9B1;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown-content{
+    position: absolute; 
+    display: none;
+    background-color: #fff;
+    padding: 10px;
+}
+
+
+.container1 {
+    margin-top: 50px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+.firstHalf{
+    width: 49%;
+}
+
+.firstHalf img {
+    width: 99%;
+    height: auto;
+}
+
+.secondHalf {
+    width: 49%;
+}
+
+.secondHalf a {
+    text-decoration: none;
+    color: #4f759b;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.secondHalf h2 {
+    color: #4f759b;
+    font-size: 24px;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 500;
+}
+
+.secondHalf p {
+    font-size: 16px;
+    color: #4f759b;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 500px;
+}
+
+hr {
+    color: #4f759b;
+    background-color: #4f759b;
+}
+
+.secondHalf h3 {
+    font-size: 18px;
+    color: #4f759b;
+    font-weight: 500;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.secondHalf h4 {
+    font-size: 16px;
+    color: #4f759b;
+    font-weight: 500;
+    font-family: "Baloo 2", sans-serif;
+}
+
+.prices {
+    width: 60%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 49%;
+    border: none;
+}
+
+#price_per_hour {
+    background-color: #4f759b;
+    color: #fff;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 16px;
+}
+
+#price_per_day {
+    background-color: #fff;
+    color: #4f759b;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 16px;
+}
+
+#continue{
+    width: 60%;
+    font-size: 18px;
+    font-family: "Baloo 2", sans-serif;
+    background-color: #4f759b;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    height: 40px;
+}

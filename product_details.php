@@ -112,7 +112,7 @@ $allProducts = getProducts($conn)
                             <hr>
                             <div class="lastpart">
                                 <p class="product-price">$<?php echo $product['price_per_day']; ?> per day</p>
-                                <a href="product_details.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
+                                <a href="product_details+.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
                             </div>
                         </div>
                     </div>

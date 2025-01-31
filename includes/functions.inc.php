@@ -101,21 +101,58 @@ function logInUser($conn, $email, $psw) {
     exit();
 }
 
-function createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition) {
-    $sql = "INSERT INTO products (product_name, creator_id, location, description, price_per_hour, price_per_day, conditions ) VALUES  (?, ?, ?, ?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
+function createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition, $image) {
+    $targetDir = "../uploads/";
 
-    if(!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../SignIn.php?error=stmtfailed");
+   
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true);
+    }
+
+    $imageFileType = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
+    $imageName = uniqid() . "." . $imageFileType;
+    $target_file = $targetDir . $imageName;
+
+    
+    $check = getimagesize($image["tmp_name"]);
+    if ($check === false) {
+        header("location: ../add_product.php?error=invalidImage");
+        exit();
+    }
+
+   
+    if ($image["size"] > 5000000) {
+        header("location: ../add_product.php?error=fileTooLarge");
+        exit();
+    }
+
+  
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+        header("location: ../add_product.php?error=invalidFileType");
+        exit();
+    }
+
+ 
+    if (!move_uploaded_file($image["tmp_name"], $target_file)) {
+        header("Location: ../add_product.php?error=uploadFailed");
         exit();
     }
 
 
-    mysqli_stmt_bind_param($stmt, "sssssss", $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition);
+    $sql = "INSERT INTO products (product_name, creator_id, location, description, price_per_hour, price_per_day, conditions, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../add_product.php?error=stmtFailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssssssss", $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition, $target_file);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
+
     header("location: ../home.php?error=none");
-        exit();
+    exit();
 }
 
 
@@ -154,5 +191,38 @@ function getUserProduct($conn, $userID) {
     mysqli_stmt_close($stmt);
 
     return $products;
+}
+
+function getProductById($conn, $productID) {
+    
+    if (!is_numeric($productID) || $productID <= 0) {
+        header("location: ../product_details.php?error=invalidProductID");
+        exit();
+    }
+
+    
+    $sql = "SELECT * FROM products WHERE productID = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../product_details.php?error=stmtFailed");
+        exit();
+    }
+
+    
+    mysqli_stmt_bind_param($stmt, "s", $productID);
+    mysqli_stmt_execute($stmt);
+
+    
+    $result = mysqli_stmt_get_result($stmt);
+
+    
+    if ($row = mysqli_fetch_assoc($result)) {
+        mysqli_stmt_close($stmt);
+        return $row; 
+    } else {
+        mysqli_stmt_close($stmt);
+        return null; 
+    }
 }
 

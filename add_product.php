@@ -43,7 +43,7 @@ session_start();
 
  <main>
     <div class="container1">
-        <form method="POST" action="includes/add_product.inc.php">
+        <form method="POST" action="includes/add_product.inc.php"  enctype="multipart/form-data">
         <div class="inputs">
             <input type="text" id="p_name" name="p_name" placeholder="Product name"><br>
             <input type="text" id="p_loc" name="p_loc" placeholder="Location"><br>

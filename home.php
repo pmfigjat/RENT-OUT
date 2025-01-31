@@ -89,7 +89,7 @@
             ?>
             <div class="product" id="product<?php echo $i + 1; ?>">
                 <div class="product-image">
-                    <img src="path/to/image/<?php echo $product['image']; ?>" alt="<?php echo $product['product_name']; ?>" />
+                    <img src="uploads/<?php echo $product['image']; ?>" alt="<?php echo $product['image']; ?>" />
                 </div>
                 <div class="product-info">
                     <h3><?php echo $product['product_name']; ?></h3>
@@ -97,7 +97,7 @@
                     <hr />
                     <div class="lastpart">
                         <p class="product-price">$<?php echo $product['price_per_hour']; ?> / hour</p>
-                        <button class="btn-view">View</button>
+                        <a href="product_details+.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
                     </div>
                 </div>
             </div>

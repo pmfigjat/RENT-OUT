@@ -8,6 +8,7 @@
     $priceH = $_POST["priceH"];
     $priceD = $_POST["priceD"];
     $condition = $_POST["condition"];
+    $image = $_FILES["image"];
 
     // For file uploads
     if (isset($_FILES["image"])) {
@@ -21,7 +22,7 @@
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
-    createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition);
+    createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition, $image);
  }
 
  else {
