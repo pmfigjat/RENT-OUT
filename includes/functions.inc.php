@@ -52,7 +52,7 @@ function emailExist($conn, $email): array|bool|null {
 
 
 function createUser($conn, $name, $email, $psw) {
-    $sql = "INSERT INTO users (name, email, psw) VALUES  (?, ?, ?);";
+    $sql = "INSERT INTO users (name, email, password) VALUES  (?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -85,7 +85,7 @@ function logInUser($conn, $email, $psw) {
         exit();
     }
     
-    $pswH = $emailexist["psw"];
+    $pswH = $emailexist["password"];
 
 
     
@@ -102,7 +102,7 @@ function logInUser($conn, $email, $psw) {
 }
 
 function createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition) {
-    $sql = "INSERT INTO products (name, creator_id, location, description, price_per_hour, price_per_day, conditions ) VALUES  (?, ?, ?, ?, ?, ?, ?);";
+    $sql = "INSERT INTO products (product_name, creator_id, location, description, price_per_hour, price_per_day, conditions ) VALUES  (?, ?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)) {

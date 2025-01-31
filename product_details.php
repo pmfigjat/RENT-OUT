@@ -104,15 +104,15 @@ $allProducts = getProducts($conn)
                     ?>
                     <div class="product" id="product">
                         <div class="product-image">
-                            <img src="img/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
+                            <img src="img/<?php echo $product['image']; ?>" alt="<?php echo $product['product_name']; ?>">
                         </div>
                         <div class="product-info">
-                            <h3><?php echo $product['name']; ?></h3>
+                            <h3><?php echo $product['product_name']; ?></h3>
                             <p class="rented">Condition: <?php echo $product['conditions']; ?> days</p>
                             <hr>
                             <div class="lastpart">
                                 <p class="product-price">$<?php echo $product['price_per_day']; ?> per day</p>
-                                <a href="product_details.php?id=<?php echo $product['ProductID']; ?>" class="btn-view">View</a>
+                                <a href="product_details.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
                             </div>
                         </div>
                     </div>

@@ -66,10 +66,10 @@
             <?php foreach ($userProducts as $product): ?>
             <div class="product">
                 <div class="product-image">
-                    <img src="path/to/image/<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
+                    <img src="path/to/image/<?php echo $product['image']; ?>" alt="<?php echo $product['product_name']; ?>">
                 </div>
                 <div class="product-info">
-                    <h3><?php echo $product['name']; ?></h3>
+                    <h3><?php echo $product['product_name']; ?></h3>
                     <p class="rented">Time rented: <?php echo $product['conditions']; ?></p>
                     <hr>
                     <div class="lastpart">
