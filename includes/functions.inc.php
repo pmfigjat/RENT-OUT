@@ -252,3 +252,5 @@ function searchProduct($conn, $p_name, $p_location): array {
 
 
 
+
+
