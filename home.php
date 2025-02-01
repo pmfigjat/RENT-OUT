@@ -49,24 +49,26 @@
 
             <div class="hero"><h2>Find your, affordable equipment - available by the week, month or year</h2></div>
         </div>
-        <div class="search-inputs">
-            <div class="search">
-                <div class="inputs">
-                    <div class="name_input">
-                        <h3>Product Name</h3>
-                        <input type="text" id="p_name" placeholder="Type here...">
+        <form action="search.php" method="get">
+            <div class="search-inputs">
+                <div class="search">
+                    <div class="inputs">
+                        <div class="name_input">
+                            <h3>Product Name</h3>
+                            <input type="text" id="p_name" name="p_name" placeholder="Type here...">
+                        </div>
+                        <div class="location_input">
+                            <h3>Location</h3>
+                            <input type="text" id="p_location" name="p_location" placeholder="Type here...">
+                        </div>
                     </div>
-                    <div class="location_input">
-                        <h3>Location</h3>
-                        <input type="text" id="p_location" placeholder="Type here...">
+        
+                    <div class="buttons-searcher">
+                        <button type="submit" id="search" name="submit">Search</button>
                     </div>
-                </div>
-    
-                <div class="buttons-searcher">
-                    <button type="button" id="search">Search</button>
                 </div>
             </div>
-        </div>
+        </form>
     </header>
 
 

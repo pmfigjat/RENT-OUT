@@ -226,3 +226,29 @@ function getProductById($conn, $productID) {
     }
 }
 
+function searchProduct($conn, $p_name, $p_location): array {
+    $sql = "SELECT * FROM products WHERE product_name = ? or location = ?;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        die("SQL Error: " . mysqli_error($conn)); // Display SQL error
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $p_name, $p_location);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+    if (!$result) {
+        die("Query Execution Error: " . mysqli_error($conn)); // Show execution error
+    }
+
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    mysqli_stmt_close($stmt);
+
+
+    return $products;
+}
+
+
+

@@ -5,7 +5,23 @@ session_start();
 require_once 'includes/dbh.inc.php';
 require_once 'includes/functions.inc.php';
 
-$allProducts = getProducts($conn)
+if(isset($_GET["submit"])) {
+    $p_name = $_GET["p_name"];  
+    $p_location = $_GET["p_location"];
+
+
+    $allProducts = searchProduct($conn, $p_name, $p_location);
+
+
+} else if (isset($_GET["clear"])){
+    header("location: product_details.php");
+        exit();
+}
+
+
+
+
+
 ?>
 
 
@@ -50,7 +66,7 @@ $allProducts = getProducts($conn)
     </header>
 
     <main>
-        <form action="search.php" method="get">
+    <form action="search.php" method="get">
             <div class="search">
                 <div class="inputs">
                     <div class="name_input">
@@ -98,7 +114,8 @@ $allProducts = getProducts($conn)
             </select>
         </div>
         
-        <div class="products">
+
+<div class="products">
             <?php
             // Check if there are products
             if (!empty($allProducts)) {
