@@ -9,7 +9,7 @@
     $priceD = $_POST["priceD"];
     $condition = $_POST["condition"];
     $image = $_FILES["image"];
-
+ 
     // For file uploads
     if (isset($_FILES["image"])) {
         $imageName = $_FILES["image"]["name"];
@@ -19,10 +19,14 @@
         move_uploaded_file($imageTmpName, $imagePath);
     }
 
-    require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
+    include '../classes/dbh.classes.php';
+    include '../classes/addProduct.classes.phpclasses.php';
+    include '../classes/addProduct-controller.classes.php';
 
-    createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition, $image);
+    $addProduct = new AddProductContr($p_name, $p_loc, $description, $priceH, $priceD, $condition, $image);
+
+    $addProduct -> addProduct();
+   //  createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition, $image);
  }
 
  else {

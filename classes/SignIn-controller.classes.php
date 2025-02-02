@@ -14,6 +14,25 @@ class SignInContr extends SignIn{
 
     }
 
+    private function signUpUser() {
+        if($this->emptySignUp() == false) {
+            header("location: ../home.php?error=emptyInput");
+            exit();
+        }
+
+        if($this->invalidEmail() == false) {
+            header("location: ../home.php?error=emptyInput");
+            exit();
+        }
+
+        if($this->invalidName() == false) {
+            header("location: ../home.php?error=emptyInput");
+            exit();
+        }
+
+        $this->setUser($this->email, $this->name, $this->psw);
+    }
+
     private function emptySignUp(){
         $result = null;
 
@@ -42,25 +61,16 @@ class SignInContr extends SignIn{
         }
     }
 
-    $this->checkUser()
-
-    private function signUpUser() {
-        if($this->emptySignUp()==false) {
-            header("location: ../home.php?error=emptyInput");
-            exit();
+    private function emailExist(){
+        if($this->checkUser($this->email)){
+            return false;
         }
-
-        if($this->invalidEmail()==false) {
-            header("location: ../home.php?error=invalidEmail");
-            exit();
+        else {
+            return true;
         }
-        if($this->invalidName()==false) {
-            header("location: ../home.php?error=invalidName");
-            exit();
-        }
-
-        $this->setUser($this->email, $this->name, $this->psw);
     }
+
+    
 
     
 }

@@ -12,11 +12,17 @@ if(isset($_POST["submit"])){
 
     $signup = new SignInContr($email, $name, $psw);
 
+    $signup -> signUpUser();
+
+    header("location: ../home.php?error=none");
+
     
 } else {
     header("location: //SignIn.php");
     exit();
 }
+
+
 
 
 // require_once 'dbh.inc.php';
