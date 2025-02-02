@@ -12,7 +12,7 @@ if(isset($_POST["submit"])){
 
     $signup = new SignInContr($email, $name, $psw);
 
-    $signup -> signUpUser();
+    $signup->signUp();
 
     header("location: ../home.php?error=none");
 

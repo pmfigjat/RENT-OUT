@@ -3,7 +3,7 @@
 class SignIn extends Dbh {
 
     protected function setUser($email, $name, $psw) {
-        $stmt = $this->connect()->prepare('INSERT INTO users (name, email, password) VALUES  (?, ?, ?);');
+        $stmt = $this->connect()->prepare('INSERT INTO users (email, name, password) VALUES  (?, ?, ?);');
 
         $hashedPsw = password_hash($psw, PASSWORD_DEFAULT);
 

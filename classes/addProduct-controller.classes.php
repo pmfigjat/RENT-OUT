@@ -11,8 +11,7 @@ class AddProductContr extends AddProduct  {
     private $condition ;
     private $image ;
 
-    public function __construct($p_name, $p_loc, $description, $priceH, $priceD, $condition, $image) {
-        session_start();  
+    public function __construct($p_name, $p_loc, $description, $priceH, $priceD, $condition, $image) { 
         if (isset($_SESSION["userID"])) {
             $this->userID = $_SESSION["userID"]; 
         } else {
@@ -29,11 +28,13 @@ class AddProductContr extends AddProduct  {
         $this->image = $image;
     }
 
-    protected function addProduct() {
-        if($this->emptyInputs() == false) {
-            header("location: ../home.php?error=emptyInput");
+    public function addProduct(){
+        if(!$this->emptyInputs() == false){
+            header("location: ../home.php?error=emptySignUp");
             exit();
         }
+
+        $this->setProduct($this->userID, $this->p_name, $this->p_loc, $this->description, $this->priceH, $this->priceD, $this->condition, $this->image );
     }
 
     private function emptyInputs() {
