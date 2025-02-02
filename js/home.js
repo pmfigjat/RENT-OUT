@@ -32,9 +32,23 @@ form.addEventListener('submit', (e) => {
 
 
 let currentIndex = 0;
-const products = document.querySelectorAll(".product");
+let productsPerPage = 3; // Default to 3 products per page
+let products = document.querySelectorAll(".product"); // Initially get all products
 const totalProducts = products.length;
-const productsPerPage = 3;
+
+function adjustProductsPerPage() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 768) {
+        productsPerPage = 1; // Show 1 product per row on small screens
+    } else if (screenWidth <= 1090) {
+        productsPerPage = 2; // Show 2 products per row on medium screens
+    } else {
+        productsPerPage = 3; // Show 3 products per row on large screens
+    }
+    currentIndex = 0; // Reset index to start
+    products = document.querySelectorAll(".product"); // Update the product elements after resizing
+    showProducts(); // Display products based on new productsPerPage
+}
 
 // Function to show the current set of products
 function showProducts() {
@@ -64,4 +78,32 @@ document.getElementById("arrow-left").addEventListener("click", () => {
 });
 
 // Initial display of products
-showProducts();
+adjustProductsPerPage(); // Adjust and show products on page load
+
+// Adjust on window resize
+window.addEventListener("resize", adjustProductsPerPage);
+
+
+const btn = document.getElementById("btn");
+
+btn.addEventListener('click', function() {
+    // Check if the sidebar is open, and toggle accordingly
+    const sidebar = document.getElementById("mySidebar");
+    if (sidebar.style.width === "250px") {
+        closeNav();  // If it's open, close it
+    } else {
+        openNav();  // If it's closed, open it
+    }
+});
+
+// Function to open the sidebar
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";  
+}
+
+// Function to close the sidebar
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";  
+}
+
+

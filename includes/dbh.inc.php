@@ -1,12 +1,12 @@
-<?php 
+<!-- <?php 
 
-$serverName = "localhost";
-$dBUsername = "root";
-$dBPassword = "";
-$dBName = "rent-out";
+// $serverName = "localhost";
+// $dBUsername = "root";
+// $dBPassword = "";
+// $dBName = "rent-out";
 
-$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName); 
+// $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName); 
 
-if(!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if(!$conn) {
+   // die("Connection failed: " . mysqli_connect_error());
+//} -->

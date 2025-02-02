@@ -3,10 +3,13 @@
 
     $userID = $_SESSION["userID"];
 
-    require_once 'includes/dbh.inc.php';
-    require_once 'includes/functions.inc.php';
+    require_once 'classes/dbh.classes.php';
+    require_once 'classes/product.classes.php';
 
-    $userProducts = getUserProduct($conn, $userID);
+    $product = new Product();
+
+    $userID = $_SESSION["userID"];
+    $products = $product->getUserProducts($userID);
 ?>
 
 <!DOCTYPE html>
@@ -51,33 +54,32 @@
         </div>
     </header>
     <main>
-        <div class="topcontent">
-            <?php
-                if(isset($_SESSION["userID"])) {
-                    echo "<h2>" . $_SESSION["name"] . "</h2>"; 
-                }
-            ?>
-            <a href="add_product.php"><i class="fa-regular fa-plus"></i> Add a product</a>
-        </div>
+    <div class="topcontent">
+        <?php
+            if (isset($_SESSION["userID"])) {
+                echo "<h2>" . htmlspecialchars($_SESSION["name"]) . "</h2>";
+            }
+        ?>
+        <a href="add_product.php"><i class="fa-regular fa-plus"></i> Add a product</a>
+    </div>
 
-
-        <div class="products">
-        <?php if (!empty($userProducts)): ?>
-            <?php foreach ($userProducts as $product): ?>
-            <div class="product">
-                <div class="product-image">
-                    <img src="path/to/image/<?php echo $product['image']; ?>" alt="<?php echo $product['product_name']; ?> ">
-                </div>
-                <div class="product-info">
-                    <h3><?php echo $product['product_name']; ?></h3>
-                    <p class="rented">Time rented: <?php echo $product['conditions']; ?></p>
-                    <hr>
-                    <div class="lastpart">
-                        <p class="product-price">Price: $<?php echo $product['price_per_day']; ?></p>
-                        <button class="btn-view">View</button>
+    <div class="products">
+        <?php if (!empty($products)): ?>
+            <?php foreach ($products as $product): ?>
+                <div class="product">
+                    <div class="product-image">
+                        <img src="uploads/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                    </div>
+                    <div class="product-info">
+                        <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
+                        <p class="rented">Condition: <?php echo htmlspecialchars($product['conditions']); ?></p>
+                        <hr>
+                        <div class="lastpart">
+                            <p class="product-price">Price: $<?php echo number_format($product['price_per_day'], 2); ?></p>
+                            <a href="product_details.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php endforeach; ?>
         <?php else: ?>
             <p>No products uploaded yet. <a href="add_product.php">Add a product</a>.</p>

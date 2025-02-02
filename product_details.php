@@ -25,9 +25,24 @@ $products = $productObj->getAllProducts();
     <title>RENT OUT | More Products</title>
 </head>
 <body>
+<div id="mySidebar" class="sidebar">
+<a href="home.php">Home</a><br>
+<a href="product_details.php">More Products</a><br>
+<a href="how_it_works.php">How It Works</a><br>
+<?php
+    if(isset($_SESSION["userID"])) {
+        echo "<a href='dashboard.php'>Profile</a><br>";
+        echo "<a href='includes/logout.inc.php'>Log Out!</a><br>";
+        } else {
+        echo "<a href='SignIn.php'>Sign In</a><br>";
+        echo "<a href='login.php'>Log In</a><br>";
+    }
+?>
+</div>
     <header class="header">
        <nav>
         <h2>RENT OUT</h2>
+        <i class="fa fa-bars" id="btn" aria-hidden="true"></i>
         <div class="links">
             <a href="home.php">Home</a>
             <a href="product_details.php">More Products</a>
@@ -71,33 +86,6 @@ $products = $productObj->getAllProducts();
             </div>
         </form>
 
-        <div class="option">
-            <select name="sort" id="sortby">
-                <option value="sortby">Sort By</option>
-                <option value="creationDate">Creation Date</option>
-                <option value="priceAsc">Price Ascending</option>
-                <option value="priceDsc">Price Descending</option>
-            </select>
-            <select name="priceperH" id="priceperH">
-                <option value="priceperH">Price per hour</option>
-                <option value="5">&lt; 5$</option>
-                <option value="5-10">5$ - 10$</option>
-                <option value="10-20">10$ - 20$</option>
-                <option value="20+">20$+</option>
-            </select>
-            <select name="cat" id="category">
-                <option value="category">Category</option>
-                <option value="cameras">Cameras</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Sports">Sports</option>
-            </select>
-            <select name="condition" id="condition">
-                <option value="condition">Condition</option>
-                <option value="bad">Bad</option>
-                <option value="good">Good</option>
-                <option value="excellent">Excellent</option>
-            </select>
-        </div>
         
         <div class="products">
             <?php
@@ -130,3 +118,29 @@ $products = $productObj->getAllProducts();
     </main>
 </body>
 </html>
+
+
+<script>
+
+const btn = document.getElementById("btn");
+
+btn.addEventListener('click', function() {
+    // Check if the sidebar is open, and toggle accordingly
+    const sidebar = document.getElementById("mySidebar");
+    if (sidebar.style.width === "250px") {
+        closeNav();  // If it's open, close it
+    } else {
+        openNav();  // If it's closed, open it
+    }
+});
+
+// Function to open the sidebar
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";  
+}
+
+// Function to close the sidebar
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";  
+}
+</script>

@@ -56,5 +56,16 @@ class Product extends Dbh {
             return false; 
         }
     }
+
+    public function getUserProducts($userID) {
+        $sql = "SELECT * FROM products WHERE creator_id = :userID";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->bindParam(":userID", $userID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        // Fetch all products for the user
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
+    }
 }
 

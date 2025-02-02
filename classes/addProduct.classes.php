@@ -19,5 +19,7 @@ class AddProduct extends Dbh {
             exit();
         }
     }
+
+    
     
 }

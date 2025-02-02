@@ -23,10 +23,30 @@
     <title>RENT OUT | Home</title>
 </head>
 <body>
+
+<div id="mySidebar" class="sidebar">
+<a href="home.php">Home</a><br>
+<a href="product_details.php">More Products</a><br>
+<a href="how_it_works.php">How It Works</a><br>
+<?php
+    if(isset($_SESSION["userID"])) {
+        echo "<a href='dashboard.php'>Profile</a><br>";
+        echo "<a href='includes/logout.inc.php'>Log Out!</a><br>";
+        } else {
+        echo "<a href='SignIn.php'>Sign In</a><br>";
+        echo "<a href='login.php'>Log In</a><br>";
+    }
+?>
+</div>
     <header class="header">
         <div class="bg">
             <div class="try1">
-                <nav class="nav-bar">
+
+                <nav class="second-nav">
+                <h2>RENT OUT</h2>
+                <i class="fa fa-bars" id="btn" aria-hidden="true"></i>
+                </nav>
+                <nav id="nav-bar" class="nav-bar">
                     <h2>RENT OUT</h2>
                     <div class="links">
                         <a href="home.php">Home</a>

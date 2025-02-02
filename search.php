@@ -88,33 +88,6 @@ session_start();
             </div>
         </form>
 
-        <div class="option">
-            <select name="sort" id="sortby">
-                <option value="sortby">Sort By</option>
-                <option value="creationDate">Creation Date</option>
-                <option value="priceAsc">Price Ascending</option>
-                <option value="priceDsc">Price Descending</option>
-            </select>
-            <select name="priceperH" id="priceperH">
-                <option value="priceperH">Price per hour</option>
-                <option value="5">&lt; 5$</option>
-                <option value="5-10">5$ - 10$</option>
-                <option value="10-20">10$ - 20$</option>
-                <option value="20+">20$+</option>
-            </select>
-            <select name="cat" id="category">
-                <option value="category">Category</option>
-                <option value="cameras">Cameras</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Sports">Sports</option>
-            </select>
-            <select name="condition" id="condition">
-                <option value="condition">Condition</option>
-                <option value="bad">Bad</option>
-                <option value="good">Good</option>
-                <option value="excellent">Excellent</option>
-            </select>
-        </div>
         
 
         <div class="products">
@@ -134,7 +107,7 @@ session_start();
                     <hr>
                     <div class="lastpart">
                         <p class="product-price">$<?php echo number_format($product['price_per_day'], 2); ?> per day</p>
-                        <a href="product_details.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
+                        <a href="product_details+.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
                     </div>
                 </div>
             </div>
