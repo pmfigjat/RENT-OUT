@@ -3,8 +3,7 @@
 class LogIn extends Dbh {
 
     protected function getUser($email, $psw) {
-        session_start();
-    
+        
         $stmt = $this->connect()->prepare('SELECT password FROM users WHERE email = ?;');
     
         if(!$stmt->execute(array($email))){
@@ -33,10 +32,12 @@ class LogIn extends Dbh {
                 header("location: ../home.php?error=stmtFailed2");
                 exit();
             }
+            session_start();
     
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $_SESSION["userID"] = $user[0]["userID"];
             $_SESSION["name"] = $user[0]["name"];
+            $_SESSION["is_admin"] = $user[0]["is_admin"];
     
             
         }

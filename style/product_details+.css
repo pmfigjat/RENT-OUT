@@ -173,3 +173,16 @@ hr {
     color: #fff;
     height: 40px;
 }
+
+.delete{
+    border: none;
+    width: 60%;
+    margin-top: 10px;
+    height: 40px;
+    background-color: red;
+    color: #fff;
+    border-radius: 5px;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}

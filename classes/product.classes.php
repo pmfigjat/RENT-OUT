@@ -46,5 +46,15 @@ class Product extends Dbh {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function deleteProduct($productID) {
+        $stmt = $this->connect()->prepare('DELETE FROM products WHERE productID = ?');
+        
+        if ($stmt->execute([$productID])) {
+            return true;  
+        } else {
+            return false; 
+        }
+    }
 }
 

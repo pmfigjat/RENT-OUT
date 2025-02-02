@@ -9,9 +9,14 @@ session_start();
         $productId = $_GET['id'];  
         $productObj = new Product();
         $product = $productObj->getProductById($productId);
+        if(isset($_POST["delete"])){
+            $productObj->deleteProduct($productId);
+            header("location: home.php");
+        }
+    
     } 
 
-
+    
 
 
 ?>
@@ -88,6 +93,15 @@ session_start();
 
         
         <button id="continue">Continue</button>
+        <form action="" method="post">
+        <div class="delete1">
+            <?php 
+                if($_SESSION["is_admin"]) {
+                    echo "<button type='submit' class='delete' name='delete'>Delete product</button>";
+                }
+            ?>
+        </div>
+        </form>
     </div>
 </div>
 
