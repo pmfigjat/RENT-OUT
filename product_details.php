@@ -2,10 +2,11 @@
 
 session_start();
 
-require_once 'includes/dbh.inc.php';
-require_once 'includes/functions.inc.php';
+require_once 'classes/dbh.classes.php';
+require_once 'classes/product.classes.php';
 
-$allProducts = getProducts($conn)
+$productObj = new Product();
+$products = $productObj->getAllProducts();
 ?>
 
 
@@ -101,8 +102,8 @@ $allProducts = getProducts($conn)
         <div class="products">
             <?php
             // Check if there are products
-            if (!empty($allProducts)) {
-                foreach ($allProducts as $product) {
+            if (!empty($products)) {
+                foreach ($products as $product) {
                     ?>
                     <div class="product" id="product">
                         <div class="product-image">

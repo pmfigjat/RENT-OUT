@@ -77,20 +77,23 @@ nav {
     margin-top: 50px;
     width: 90%;
     display: flex;
+    justify-self: center;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .firstHalf{
-    width: 49%;
+    width: 45%;
 }
 
 .firstHalf img {
-    width: 99%;
+    width: 100%;
     height: auto;
 }
 
 .secondHalf {
-    width: 49%;
+    gap: 10px;
+    width: 45%;
 }
 
 .secondHalf a {

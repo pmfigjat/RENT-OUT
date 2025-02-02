@@ -26,6 +26,8 @@
     $addProduct = new AddProductContr($p_name, $p_loc, $description, $priceH, $priceD, $condition, $image);
 
     $addProduct -> addProduct();
+
+    header("location: ../home.php?error=none");
    //  createProduct($conn, $p_name, $userID, $p_loc, $p_description, $priceH, $priceD, $condition, $image);
  }
 

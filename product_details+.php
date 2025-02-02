@@ -2,12 +2,15 @@
 
 session_start();
 
-require_once 'includes/dbh.inc.php';
-require_once 'includes/functions.inc.php';
+    require_once 'classes/dbh.classes.php';
+    require_once 'classes/product.classes.php';
 
-$productID = $_GET["id"];
+    if (isset($_GET['id'])) {
+        $productId = $_GET['id'];  
+        $productObj = new Product();
+        $product = $productObj->getProductById($productId);
+    } 
 
-$product = getProductById($conn, $productID);
 
 
 
@@ -55,32 +58,39 @@ $product = getProductById($conn, $productID);
     </header>
 
     <main>
-        <div class="container1">
-            <div class="firstHalf">
-                <img src="img/<?php echo $product['image']; ?>" alt="<?php echo $product['product_name']; ?>">
-            </div>
-            <div class="secondHalf">
-                <a href="product_details.php">Back</a>
+    <div class="container1">
+    <div class="firstHalf">
+        <img src="uploads/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+    </div>
+    <div class="secondHalf">
+      
+        <a href="home.php">Back</a>
 
-                <h2><?php echo $product['product_name'];?></h2>
+       
+        <h2><?php echo htmlspecialchars($product['product_name']); ?></h2>
 
-                <div class="description">
-                    <h2>Description</h2>
-                    <hr>
-                    <p><?php echo $product['description'];?></p>
-                </div>
-
-                <div class="prices">
-                    <button id="price_per_hour" class="btn"><?php echo $product['price_per_day'];?>/h</button>
-                    <button id="price_per_day" class="btn"><?php echo $product['price_per_hour'];?>/d</button>
-                </div>
-
-                <h3>Pick Up and Return location</h3>
-                <h4><?php echo $product['location'];?></h4>
-
-                <button id="continue">Continue</button>
-            </div>
+       
+        <div class="description">
+            <h2>Description</h2>
+            <hr>
+            <p><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
         </div>
+
+        
+        <div class="prices">
+            <button id="price_per_hour" class="btn"><?php echo number_format($product['price_per_hour'], 2); ?>/h</button>
+            <button id="price_per_day" class="btn"><?php echo number_format($product['price_per_day'], 2); ?>/d</button>
+        </div>
+
+
+        <h3>Pick Up and Return Location</h3>
+        <h4><?php echo htmlspecialchars($product['location']); ?></h4>
+
+        
+        <button id="continue">Continue</button>
+    </div>
+</div>
+
     </main>
 
 

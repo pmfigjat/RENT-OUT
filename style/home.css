@@ -177,7 +177,6 @@ body{
 }
 
 .container-1{
-
     margin-top: 50px;
     width: 90%;
     justify-self: center;
@@ -200,7 +199,14 @@ body{
     height: 500px;
     display: flex;
     align-self: center;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-section i {
+    color:  #4F759B;
+    width: 20px;
+    height: 20px;
 }
 
 .product{

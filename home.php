@@ -1,8 +1,11 @@
 <?php
     session_start();
 
-    require_once 'includes/dbh.inc.php';
-    require_once 'includes/functions.inc.php';
+    require_once 'classes/dbh.classes.php';
+    require_once 'classes/product.classes.php';
+
+    $productObj = new Product();
+    $products = $productObj->getLimitedProducts(10);
 ?>
 
 <!DOCTYPE html>
@@ -76,26 +79,18 @@
         <div class="container-1">
             <h1 class="pR">Products to rent</h1>
             <div class="product-section">
-        <div class="arrow-left"></div>
-        <div class="products">
-            <?php
-            // Fetch all products
-            $products = getProducts($conn);
-
-            // Limit to 3 products
-            $limit = 3;
-
-            // Loop through products and display only 3
-            for ($i = 0; $i < $limit && $i < count($products); $i++):
-                $product = $products[$i];
-            ?>
-            <div class="product" id="product<?php echo $i + 1; ?>">
+    <div id="arrow-left" class="arrow">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </div>
+    <div class="products" id="product-container">
+        <?php foreach ($products as $index => $product) { ?>
+            <div class="product" id="product-<?php echo $index; ?>" style="display: <?php echo $index < 3 ? 'block' : 'none'; ?>;">
                 <div class="product-image">
-                    <img src="uploads/<?php echo $product['image']; ?>" alt="<?php echo $product['image']; ?>" />
+                    <img src="uploads/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                 </div>
                 <div class="product-info">
-                    <h3><?php echo $product['product_name']; ?></h3>
-                    <p class="rented">Condtion: <?php echo $product['conditions']; ?></p>
+                    <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
+                    <p class="rented">Condition: <?php echo htmlspecialchars($product['conditions']); ?></p>
                     <hr />
                     <div class="lastpart">
                         <p class="product-price">$<?php echo $product['price_per_hour']; ?> / hour</p>
@@ -103,10 +98,14 @@
                     </div>
                 </div>
             </div>
-            <?php endfor; ?>
-        </div>
+        <?php } ?>
     </div>
-        </div>
+
+    <div id="arrow-right" class="arrow">
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </div>
+</div>
+    </div>
 
         <div class="container-2">
             <div class="background1">
