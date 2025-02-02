@@ -2,21 +2,23 @@
 
 session_start();
 
-require_once 'includes/dbh.inc.php';
-require_once 'includes/functions.inc.php';
+    require_once 'classes/dbh.classes.php';
+    require_once 'classes/product.classes.php';
 
-if(isset($_GET["submit"])) {
-    $p_name = $_GET["p_name"];  
-    $p_location = $_GET["p_location"];
-
-
-    $allProducts = searchProduct($conn, $p_name, $p_location);
+    if(isset($_GET["submit"])) {
+        $productName = $_GET["p_name"];
+        $location = $_GET["p_location"];
+    }
 
 
-} else if (isset($_GET["clear"])){
+    $productObj = new Product();
+    $allProducts = $productObj->searchProducts($productName, $location);
+    
+    if (isset($_GET["clear"])){
     header("location: product_details.php");
         exit();
 }
+
 
 
 
@@ -115,33 +117,35 @@ if(isset($_GET["submit"])) {
         </div>
         
 
-<div class="products">
-            <?php
-            // Check if there are products
-            if (!empty($allProducts)) {
-                foreach ($allProducts as $product) {
-                    ?>
-                    <div class="product" id="product">
-                        <div class="product-image">
-                            <img src="img/<?php echo $product['image']; ?>" alt="<?php echo $product['product_name']; ?>">
-                        </div>
-                        <div class="product-info">
-                            <h3><?php echo $product['product_name']; ?></h3>
-                            <p class="rented">Condition: <?php echo $product['conditions']; ?> days</p>
-                            <hr>
-                            <div class="lastpart">
-                                <p class="product-price">$<?php echo $product['price_per_day']; ?> per day</p>
-                                <a href="product_details+.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                }
-            } else {
-                echo "<p>No products available at the moment.</p>";
-            }
+        <div class="products">
+    <?php
+    // Check if there are products
+    if (!empty($allProducts)) {
+        foreach ($allProducts as $product) {
             ?>
-        </div>
+            <div class="product" id="product-<?php echo $product['productID']; ?>">
+                <div class="product-image">
+                    <!-- Display product image with dynamic source -->
+                    <img src="uploads/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                </div>
+                <div class="product-info">
+                    <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
+                    <p class="rented">Condition: <?php echo htmlspecialchars($product['conditions']); ?></p>
+                    <hr>
+                    <div class="lastpart">
+                        <p class="product-price">$<?php echo number_format($product['price_per_day'], 2); ?> per day</p>
+                        <a href="product_details.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    } else {
+        echo "<p>No products available at the moment.</p>";
+    }
+    ?>
+</div>
+
         
     </main>
 </body>

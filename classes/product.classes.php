@@ -35,13 +35,16 @@ class Product extends Dbh {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function searchProducts($searchQuery) {
-        $stmt = $this->connect()->prepare("
-            SELECT * FROM products
-            WHERE product_name LIKE :searchQuery OR location LIKE :searchQuery
-        ");
-        $stmt->execute([':searchQuery' => '%' . $searchQuery . '%']);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    public function searchProducts($productName, $location) {
+        $stmt = $this->connect()->prepare('SELECT * from products where product_name = ? or location = ?;');
+
+        if(!$stmt->execute(array($productName, $location))) {
+            $stmt = null;
+            header("location: ../home.php?error=stmtFailed");
+            exit();
+        }
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
