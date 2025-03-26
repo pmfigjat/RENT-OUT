@@ -40,6 +40,9 @@
                             <div class="dropdown-content">
                                 <?php
                                     if(isset($_SESSION["userID"])) {
+                                        if($_SESSION["is_admin"]) {
+                                            echo "<a href='adminDashboard.php'>Dashboard</a><br>";
+                                        }
                                         echo "<a href='dashboard.php'>Profile</a><br>";
                                         echo "<a href='includes/logout.inc.php'>Log Out!</a><br>";
                                     } else {

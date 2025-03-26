@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 90%;
+
+}
+
+.header h2 {
+
+    font-family: "Baloo 2", sans-serif;
+    color: #92C9B1;
+    border: 3px solid #92C9B1;
+    width: fit-content;
+    height: fit-content;
+    padding: 3px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.links a {
+    text-decoration: none;
+    color: #7A7D7C;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 18px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.icon{
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    background-color: #92C9B1;
+    border-radius: 20px;
+    border: solid 1px #92C9B1;
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown-content{
+    position: absolute; 
+    display: none;
+    background-color: #fff;
+    padding: 10px;
+}
+
+
+.container1{
+
+}
+
+.container2 {
+    border: 1px solid red;
+    width: 80%;
+    height: 500px;
+    justify-self: center;
+    display: flex;
+}
+
+.users {
+    display: none;
+}
+
+.products {
+    border: 1px blue solid;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product {
+    border: 1px solid green;
+    width: 90%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+}

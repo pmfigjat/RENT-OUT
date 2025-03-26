@@ -1,9 +1,23 @@
 <?php
+
 session_start();
+
+require_once 'classes/dbh.classes.php';
+require_once 'classes/product.classes.php';
+
+
+$productObj = new Product();
+$products = $productObj->getAllProducts();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
 <head>
     <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +27,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
     integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style/add_product.css">
+    <link rel="stylesheet" href="style/adminDashboard.css">
     <title>RENT OUT | More Products</title>
 </head>
 <header class="header">
@@ -45,29 +59,49 @@ session_start();
  </header>
 
  <main>
-    <div class="container1">
-        <form method="POST" action="includes/add_product.inc.php"  enctype="multipart/form-data">
-        <div class="inputs">
-            <input type="text" id="p_name" name="p_name" placeholder="Product name"><br>
-            <input type="text" id="p_loc" name="p_loc" placeholder="Location"><br>
-            <input type="text" id="p_description" name="p_description" placeholder="Product Description"><br>
-            <div class="price">
-                <input type="number"  id="priceH" name="priceH" placeholder="Price per hour">
-                <input type="number" id="priceD" name="priceD" placeholder="Price per day">
-            </div>
-            <select name="condition" id="condition">
-                <option value="condition">Condition</option>
-                <option value="bad">Bad</option>
-                <option value="good">Good</option>
-                <option value="excellent">Excellent</option>
-            </select><br>
-            <input type="file" name="image" id="image" accept="image/*">
-            
-            <button type="submit" name="submit" id="btn"><i class="fa-regular fa-plus"></i> Add a product</button>
-            
-        </div>
-        </form>
+    <div class="container-1">
+        <button>Users</button>
+        <button>Products</button>
     </div>
+
+    <div class="container2">
+        <div class="users">
+
+        </div>
+        <div class="products">
+            <?php
+            if (!empty($products)) {
+                foreach ($products as $product) {
+                    ?>
+            <div class="product">
+                <div class="p_info">
+                    
+                    <h3><?php echo $product['product_name']; ?></h3>
+                    <h5>Product Publisher</h5>
+                    <h5><?php echo htmlspecialchars($product['location']); ?>/h5>
+            
+                </div>
+
+                <div class="buttons">
+                <a href="product_details+.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
+                        <form action="" method="post">
+                            <div class="delete1">
+                                <?php 
+                                    if($_SESSION["is_admin"]) {
+                                    echo "<button type='submit' class='delete' name='delete'>Delete product</button>";
+                                    }
+                                ?>
+                            </div>
+                        </form>
+                </div>
+                
+
+            </div>
+            <?php
+                }}
+            ?>
+        </div>
+    </>
  </main>
-<script src="js/add_product.js"></script>
+</body>
 </html>

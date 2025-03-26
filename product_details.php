@@ -5,6 +5,7 @@ session_start();
 require_once 'classes/dbh.classes.php';
 require_once 'classes/product.classes.php';
 
+
 $productObj = new Product();
 $products = $productObj->getAllProducts();
 ?>
@@ -33,7 +34,11 @@ $products = $productObj->getAllProducts();
     if(isset($_SESSION["userID"])) {
         echo "<a href='dashboard.php'>Profile</a><br>";
         echo "<a href='includes/logout.inc.php'>Log Out!</a><br>";
-        } else {
+        if  ($_SESSION["is_admin"]) {
+            echo "<a href='adminDashboard.php'>Dashboard</a><br>";
+        }
+    }
+         else {
         echo "<a href='SignIn.php'>Sign In</a><br>";
         echo "<a href='login.php'>Log In</a><br>";
     }
@@ -52,6 +57,9 @@ $products = $productObj->getAllProducts();
                 <div class="dropdown-content">
                                 <?php
                                     if(isset($_SESSION["userID"])) {
+                                        if($_SESSION["is_admin"]) {
+                                            echo "<a href='adminDashboard.php'>Dashboard</a><br>";
+                                        }
                                         echo "<a href='dashboard.php'>Profile</a><br>";
                                         echo "<a href='includes/logout.inc.php'>Log Out!</a><br>";
                                     } else {
@@ -89,7 +97,6 @@ $products = $productObj->getAllProducts();
         
         <div class="products">
             <?php
-            // Check if there are products
             if (!empty($products)) {
                 foreach ($products as $product) {
                     ?>
