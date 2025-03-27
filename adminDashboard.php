@@ -4,11 +4,26 @@ session_start();
 
 require_once 'classes/dbh.classes.php';
 require_once 'classes/product.classes.php';
+require_once 'classes/users.classes.php';
 
 
 $productObj = new Product();
 $products = $productObj->getAllProducts();
+
+$userObj = new User();
+$users = $userObj->getAllUsers();
+
+if(isset($_POST["delete"])) {
+    $userID = $_POST["delete"];
+    $userObj->deleteUser($userID);
+}
+
+$showProducts = isset($_GET["products"]);
+$showusers = isset($_GET["users"]);
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,15 +75,41 @@ $products = $productObj->getAllProducts();
 
  <main>
     <div class="container-1">
-        <button>Users</button>
-        <button>Products</button>
+        <form action="" method="get" class="first-form">
+            <button type="submit" name="users"  class="users-btn">Users</button>
+            <button type="submit" name="products"  class="products-btn">Products</button>
+        </form>
     </div>
 
     <div class="container2">
-        <div class="users">
+        <div class="users" style="display: <?= $showusers ? 'flex' : 'none' ?>;">
+            <?php 
+            if(!empty($users)) {
+                foreach($users as $user) {
+                    ?>
+                    <div class="user">
+                        <h3>Creator ID: <?php echo $user["userID"]?></h3>
+                        <h3>Role: <?php echo $user["is_admin"] ?  "Admin" : "User" ?></h3>
+                        <div class="inputs">
+                        <form action="" method="post" class="crud-form">
+                            <input type="text" name="name"  placeholder="<?php echo $user["name"] ?>">
+                            <input type="text" name="email" id="email" placeholder="<?php echo $user["name"] ?>">
+                            <select name="roles" id="">
 
+                            <option value="User" <?= $user["is_admin"] ? "" : "selected" ?>>User</option>
+                            <option value="Admin" <?= $user["is_admin"] ? "selected" : "" ?>>Admin</option>
+                            </select>
+                        </div>
+                            <div class="btns">
+                                <button type="submit" class="update" value="<?php echo $user["userID"]?>" name="update" >Update</button>
+                                <button type="submit" class="delete" value="<?php echo $user["userID"]?>" name="delete">Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                <?php } } ?>
+                
         </div>
-        <div class="products">
+        <div class="products" style="display: <?= $showProducts ? 'flex' : 'none' ?>;">
             <?php
             if (!empty($products)) {
                 foreach ($products as $product) {
@@ -77,13 +118,15 @@ $products = $productObj->getAllProducts();
                 <div class="p_info">
                     
                     <h3><?php echo $product['product_name']; ?></h3>
-                    <h5>Product Publisher</h5>
-                    <h5><?php echo htmlspecialchars($product['location']); ?>/h5>
+                    <h5><?php echo $product['creator_id']; ?></h5>
+                    <h5><?php echo htmlspecialchars($product['location']); ?></h5>
             
                 </div>
 
                 <div class="buttons">
-                <a href="product_details+.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
+                    <div class="view">
+                        <a href="product_details+.php?id=<?php echo $product['productID']; ?>" class="btn-view">View</a>
+                    </div>
                         <form action="" method="post">
                             <div class="delete1">
                                 <?php 

@@ -67,7 +67,28 @@ nav {
 }
 
 
-.container1{
+.container-1{
+    height: 40px;
+    margin-bottom:50px;
+    width: 50%;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+.first-form {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.first-form button {
+    width: 45%;
+    background-color: #4F759B;
+    color: #fff;
+    font-family: "Baloo 2", sans-serif;
+    border: none;
 
 }
 
@@ -77,10 +98,76 @@ nav {
     height: 500px;
     justify-self: center;
     display: flex;
+    justify-content: center;
 }
 
 .users {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    
+}
+.user {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: solid 1px red;
+}
+
+.user h3 {
+    color: #92C9B1;
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+.user input {
+    margin-top: 10px;
+    border: none;
+    border-bottom: 1px solid #92C9B1;
+    height: 35px;
+    width: 250px;
+    padding: 6px;
+    color: #92C9B1;
+    
+}
+
+.user input::placeholder {
+    color: #92C9B1;
+}
+
+.user input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 10%;
+    justify-content: space-between;
+}
+
+.btns button {
+    width: 100%;
+    height: 45%;
+    border: none;
+    color: #fff;
+    font-family: "Baloo 2", sans-serif;
+
+}
+
+.update {
+    background-color: #4F759B;
+    border-radius: 5px;
+}
+
+select {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #92C9B1;
+    color: #92C9B1;
 }
 
 .products {
@@ -92,11 +179,52 @@ nav {
 }
 
 .product {
-    border: 1px solid green;
+    border: 1px solid #ccc;
     width: 90%;
     height: 100px;
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
     align-items: center;
+}
+
+.product a {
+    text-decoration: none;
+    width: 100%
+}
+
+.view {
+    width: 90%;
+    background-color: #4F759B;
+    font-family: "Baloo 2", sans-serif;
+    height: 35px;
+    display: flex;
+    text-align: center;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.view a {
+    text-decoration: none;
+    color: #fff;
+
+}
+
+.buttons {
+    width: 10%;
+    height: 100%;
+}
+
+.delete{
+    border: none;
+    width: 90%;
+    margin-top: 10px;
+    height: 35px;
+    background-color: red;
+    color: #fff;
+    border-radius: 5px;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
 }

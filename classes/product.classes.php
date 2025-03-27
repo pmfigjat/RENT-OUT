@@ -3,7 +3,12 @@ class Product extends Dbh {
     
     
     public function getAllProducts($search = "") {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT products.productID, products.product_name, products.description, 
+                   products.location, products.price_per_day, products.price_per_hour, 
+                   products.image, products.conditions, 
+                   users.name AS creator_id 
+            FROM products 
+            JOIN users ON products.creator_id = users.userID";
         
         if (!empty($search)) {
             $sql .= " WHERE product_name LIKE ? OR location LIKE ?";
