@@ -21,4 +21,10 @@ class User extends Dbh {
             return false;
         }
     }
+
+    public function editUser($userID, $name, $email, $role) {
+        $stmt = $this->connect()->prepare("update users set name = ?, email =?, is_admin = ? where userID = ?");
+
+        return $stmt->execute([$name, $email, $role, $userID]);
+    }
 }

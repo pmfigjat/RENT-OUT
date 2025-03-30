@@ -62,6 +62,16 @@ class Product extends Dbh {
         }
     }
 
+    public function deleteByUserID($userID) {
+        $stmt = $this->connect()->prepare('DELETE from products where creator_id = ?');
+        
+        if ($stmt->execute([$userID])) {
+            return true;  
+        } else {
+            return false; 
+        }
+    }
+
     public function getUserProducts($userID) {
         $sql = "SELECT * FROM products WHERE creator_id = :userID";
         $stmt = $this->connect()->prepare($sql);

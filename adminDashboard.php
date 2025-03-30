@@ -7,19 +7,40 @@ require_once 'classes/product.classes.php';
 require_once 'classes/users.classes.php';
 
 
+
+
+
+
 $productObj = new Product();
 $products = $productObj->getAllProducts();
 
 $userObj = new User();
 $users = $userObj->getAllUsers();
 
+
+
 if(isset($_POST["delete"])) {
     $userID = $_POST["delete"];
     $userObj->deleteUser($userID);
+    $productObj->deleteByUserID($userID);
+}
+
+if(isset($_POST["deleteProduct"])) {
+    $pID = $_POST["deleteProduct"];
+    $productObj->deleteProduct($pID);
+}
+
+if(isset($_POST["update"])) {
+    $id = $_POST["update"];
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $role = $_POST["roles"] === "Admin" ? "1" : "0";
+
+    $userObj->editUser($id, $name, $email, $role);
 }
 
 $showProducts = isset($_GET["products"]);
-$showusers = isset($_GET["users"]);
+$showusers = isset($_GET["users"])
 
 ?>
 
@@ -93,10 +114,10 @@ $showusers = isset($_GET["users"]);
                         <div class="inputs">
                         <form action="" method="post" class="crud-form">
                             <input type="text" name="name"  placeholder="<?php echo $user["name"] ?>">
-                            <input type="text" name="email" id="email" placeholder="<?php echo $user["name"] ?>">
+                            <input type="text" name="email" id="email" placeholder="<?php echo $user["email"] ?>">
                             <select name="roles" id="">
 
-                            <option value="User" <?= $user["is_admin"] ? "" : "selected" ?>>User</option>
+                            <option  value="User" <?= $user["is_admin"] ? "" : "selected" ?>>User</option>
                             <option value="Admin" <?= $user["is_admin"] ? "selected" : "" ?>>Admin</option>
                             </select>
                         </div>
@@ -129,11 +150,7 @@ $showusers = isset($_GET["users"]);
                     </div>
                         <form action="" method="post">
                             <div class="delete1">
-                                <?php 
-                                    if($_SESSION["is_admin"]) {
-                                    echo "<button type='submit' class='delete' name='delete'>Delete product</button>";
-                                    }
-                                ?>
+                                <button type='submit' class='delete' name='deleteProduct' value="<?php echo $product['productID']; ?>" >Delete product</button>
                             </div>
                         </form>
                 </div>
